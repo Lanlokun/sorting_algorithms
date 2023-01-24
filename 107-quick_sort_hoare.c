@@ -65,4 +65,4 @@ void quick_sort_hoare(int *array, size_t size)
 		return;
 
 	qsh(array, 0, size - 1, size);
-}s
+}
