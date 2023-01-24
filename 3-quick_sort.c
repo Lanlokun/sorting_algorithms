@@ -1,44 +1,73 @@
-#include <stdio.h>
-#include <stdlib.h>
 #include "sort.h"
 
 /**
- * void quick_sort - Sorts an array of integers in ascending order using the Quick sort algorithm
- * @array: The array to be sorted
- * @size: Number of elements in @array
+ * quick_sort - function that sorts an array of integers
+ *              in ascending order using the Quick sort algorithm
+ * @array: array
+ * @size: array's size
+ * Return: void
  */
-
-
 void quick_sort(int *array, size_t size)
 {
-     int pivot, temp;
-    size_t i, j;
+	if (array == NULL || size < 2)
+		return;
 
-    if (size < 2)
-        return;
+	quick_s(array, 0, size - 1, size);
+}
 
-    pivot = array[size - 1];
-    i = 0;
-    j = 0;
-    while (j < size - 1)
-    {
-        if (array[j] < pivot)
-        {
-            temp = array[i];
-            array[i] = array[j];
-            array[j] = temp;
-            i++;
-        }
-        j++;
-    }
+/**
+ * partition - partition
+ * @array: array
+ * @lo: lower
+ * @hi: higher
+ * @size: array's size
+ * Return: i
+ */
+int partition(int *array, int lo, int hi, size_t size)
+{
+	int i = lo - 1, j = lo;
+	int pivot = array[hi], aux = 0;
 
-    array[size - 1] = array[i];
-    array[i] = pivot;
+	for (; j < hi; j++)
+	{
+		if (array[j] < pivot)
+		{
+			i++;
+			if (array[i] != array[j])
+			{
+				aux = array[i];
+				array[i] = array[j];
+				array[j] = aux;
+				print_array(array, size);
+			}
+		}
+	}
+	if (array[i + 1] != array[hi])
+	{
+		aux = array[i + 1];
+		array[i + 1] = array[hi];
+		array[hi] = aux;
+		print_array(array, size);
+	}
+	return (i + 1);
+}
 
-    print_array(array, size);
-    quick_sort(array, i);
-    quick_sort(array + i + 1, size - i - 1);
+/**
+ * quick_s - quick sort
+ * @array: given array
+ * @lo: lower
+ * @hi:higher
+ * @size: array's size
+ * Return: void
+ */
+void quick_s(int *array, int lo, int hi, size_t size)
+{
+	int pivot;
 
-   
-
+	if (lo < hi)
+	{
+		pivot = partition(array, lo, hi, size);
+		quick_s(array, lo, pivot - 1, size);
+		quick_s(array, pivot + 1, hi, size);
+	}
 }
