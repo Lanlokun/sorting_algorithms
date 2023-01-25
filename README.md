@@ -8,4 +8,4 @@
 
           Write a function that sorts a deck of cards.
           
-<p> Function not working completely, looking to contribute , send me an email.</p>
+<p> Function not working completely, looking to contribute , send me an email @ <strong>mlanlokun@gmail.com</strong></p>
