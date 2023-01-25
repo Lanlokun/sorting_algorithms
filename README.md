@@ -1,6 +1,4 @@
-# sorting_algorithms
-
-     Sorting Algorithms by Lanlokun and Abdul-Lateef
+# C - Sorting algorithms & Big O by Lanlokun and Abdul-Lateef
 
 
 
